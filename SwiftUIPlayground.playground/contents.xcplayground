@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
+    <pages>
+        <page name='SwiftUI_programming_language'/>
+        <page name='SwiftUI_shapes'/>
+        <page name='SwiftUI_view_builder'/>
+        <page name='SwiftUI_view_modifers'/>
+        <page name='SwiftUI_scrollview'/>
+        <page name='SwiftUI_background_overlays'/>
+        <page name='SwiftUI_images'/>
+        <page name='SwiftUI_lazyvgrid_lazyhgrid_griditem'/>
+        <page name='SwiftUI_async_images'/>
+        <page name='SwiftUI_lists'/>
+        <page name='SwiftUI_offSet'/>
+        <page name='SwiftUI_table'/>
+        <page name='SwiftUI_table_hierarchical_data'/>
+        <page name='SwiftUI_text'/>
+        <page name='SwiftUI_tabbar'/>
+        <page name='SwiftUI_combine'/>
+        <page name='SwiftUI_commands'/>
+        <page name='SwiftUI_shimmer_and_loading'/>
+    </pages>
+</playground>
