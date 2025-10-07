@@ -8,6 +8,7 @@ struct ParentView: View {
     @State private var counter = 0
     
     var body: some View {
+        let _ = Self._printChanges()
         VStack {
             Text("Parent Counter: \(counter)")
             Button("Increment") {
@@ -34,33 +35,37 @@ struct ChildViewWithDependency: View {
     let value: Int
     
     var body: some View {
+        let _ = Self._printChanges()
         Text("Child with dependency: \(value)")
             .background(Color.yellow)
-            .onAppear { print("ChildViewWithDependency rendered") }
+//            .onAppear { print("ChildViewWithDependency rendered") }
     }
 }
 
 struct ChildViewWithoutDependency: View {
     var body: some View {
+        let _ = Self._printChanges()
         Text("Child without dependency")
             .background(Color.green)
-            .onAppear { print("ChildViewWithoutDependency rendered") }
+//            .onAppear { print("ChildViewWithoutDependency rendered") }
     }
 }
 
 struct EvenCounterView: View {
     var body: some View {
+        let _ = Self._printChanges()
         Text("Counter is even")
             .background(Color.blue)
-            .onAppear { print("EvenCounterView rendered") }
+//            .onAppear { print("EvenCounterView rendered") }
     }
 }
 
 struct OddCounterView: View {
     var body: some View {
+        let _ = Self._printChanges()
         Text("Counter is odd")
             .background(Color.red)
-            .onAppear { print("OddCounterView rendered") }
+//            .onAppear { print("OddCounterView rendered") }
     }
 }
 PlaygroundPage.current.setLiveView(

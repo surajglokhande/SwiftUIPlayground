@@ -63,7 +63,7 @@ final class CounterViewModel: ObservableObject {
     }
 }
 struct ObservedObjectCounterViewTwo: View {
-	@ObservedObject var viewModel: CounterViewModel
+    @ObservedObject var viewModel = CounterViewModel(_name: "suraj")
 
 	var body: some View {
 		VStack {
