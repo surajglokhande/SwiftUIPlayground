@@ -29,17 +29,34 @@ struct TaskListView: View {
             TextViewOne()
             
             //binding resolved re-render issue by ObservedObject
-            TextView(count: $viewModel.count)
+            TextViewTwo(count: $viewModel.count)
             
-            List(viewModel.tasks, id: \.self) { task in
-                Text(task)
-            }
+            ListView(viewModel: viewModel)
 
-            Button("Add Task") {
-                viewModel.addTask("New Task \(viewModel.tasks.count + 1)")
-//                viewModel.count += 1
-            }
+            ButtonView()
+                .environmentObject(viewModel)
         }
+    }
+}
+
+struct ListView: View {
+    @ObservedObject var viewModel: TaskViewModel
+    var body: some View {
+        List(viewModel.tasks, id: \.self) { task in
+            Text(task)
+        }
+    }
+}
+
+struct ButtonView: View {
+    @EnvironmentObject var viewModel: TaskViewModel
+    var body: some View {
+        let _ = Self._printChanges()
+        Button("Add Task") {
+            viewModel.addTask("New Task \(viewModel.tasks.count + 1)")
+            viewModel.count += 1
+        }
+        .foregroundStyle(.debug)
     }
 }
 
@@ -52,7 +69,7 @@ struct TextViewOne: View {
     }
 }
 
-struct TextView: View {
+struct TextViewTwo: View {
     
     @Binding var count: Int
     
@@ -64,7 +81,7 @@ struct TextView: View {
 }
 
 // 3. Create a parent view that passes the viewModel
-struct ContentView: View {
+struct SwiftUI_render_observable_object: View {
     // The parent view creates and owns the viewModel
     @StateObject var viewModel = TaskViewModel()
     
@@ -87,7 +104,7 @@ extension ShapeStyle where Self == Color {
 }
 
 PlaygroundPage.current.setLiveView(
-    ContentView()
+    SwiftUI_render_observable_object()
         .frame(width: 390, height: 500)
 )
 

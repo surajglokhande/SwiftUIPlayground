@@ -28,9 +28,9 @@ struct TaskListView: View {
         
         VStack {
             Text("Count: 5")
-                .border(.debug)
+                .foregroundStyle(.debug)
             List(viewModel.tasks, id: \.self) { task in
-                
+
                 Text(task)
             }
             
@@ -38,17 +38,8 @@ struct TaskListView: View {
                 viewModel.addTask("New Task \(viewModel.tasks.count + 1)")
 //                viewModel.count += 1
             }
+            .foregroundStyle(.debug)
         }
-    }
-}
-
-extension ShapeStyle where Self == Color {
-    static var debug: Color {
-        Color(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1)
-        )
     }
 }
 
@@ -62,6 +53,15 @@ struct ContentView: View {
         let _ = Self._printChanges()
         
         TaskListView(viewModel: viewModel)
+    }
+}
+extension ShapeStyle where Self == Color {
+    static var debug: Color {
+        Color(
+            red: .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue: .random(in: 0...1)
+        )
     }
 }
 

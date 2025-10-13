@@ -19,17 +19,47 @@ import PlaygroundSupport
 class CounterViewModel: ObservableObject {
     // @Published var count: Int = 0
     var count: CurrentValueSubject<Int, Never> = .init(0)
+    
+    var tasks: CurrentValueSubject<[String], Never> = .init([])
+    
+    func addTask(_ task: String) {
+        // When this property changes, any view observing this object will update
+        tasks.send(tasks.value + [task])
+    }
 }
 
 struct SwiftUI_combine_currentValueSubject: View {
     @ObservedObject private var viewModel = CounterViewModel()
+    
     var body: some View {
         let _ = Self._printChanges()
         VStack {
             TextView()
+            TextViewAnother()
+            ListView()
             CounterView()
         }
         .environmentObject(viewModel)
+    }
+}
+
+struct ListView: View {
+    @EnvironmentObject var viewModel: CounterViewModel
+    @State private var array: [String] = []
+    var body: some View {
+        List(array, id: \.self) { task in
+            Text(task)
+        }
+        .onReceive(viewModel.tasks) { tasks in
+            array = tasks
+        }
+    }
+}
+
+struct TextViewAnother: View {
+    var body: some View {
+        Text("Count: 5")
+            .foregroundStyle(.debug)
     }
 }
 
@@ -53,6 +83,7 @@ struct CounterView: View {
         Button("Increment") {
             // viewModel.count += 1 // Old
             viewModel.count.send(viewModel.count.value + 1)
+            viewModel.addTask("New Task \(viewModel.tasks.value.count + 1)")
         }
         .foregroundStyle(.debug)
     }

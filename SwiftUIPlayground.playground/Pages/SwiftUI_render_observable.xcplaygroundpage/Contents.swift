@@ -6,7 +6,6 @@ import PlaygroundSupport
 
 @Observable
 class TaskViewModel {
-    // @Published tells SwiftUI which properties should trigger updates
     var tasks: [String] = []
     var count: Int = 5
     
@@ -16,9 +15,7 @@ class TaskViewModel {
     }
 }
 
-// 2. Create a view that uses the model with @ObservedObject
 struct TaskListView: View {
-    // This view will update whenever published properties in viewModel change
     @Bindable var viewModel: TaskViewModel
     
     var body: some View {
@@ -28,17 +25,27 @@ struct TaskListView: View {
         VStack {
             TextViewOne()
             
-            TextView(count: $viewModel.count)
+            TextViewTwo(count: $viewModel.count)
             
             List(viewModel.tasks, id: \.self) { task in
                 Text(task)
             }
             
-            Button("Add Task") {
-                viewModel.addTask("New Task \(viewModel.tasks.count + 1)")
-//                                viewModel.count += 1
-            }
+            ButtonView(viewModel: viewModel)
         }
+    }
+}
+
+struct ButtonView: View {
+    
+    @State var viewModel: TaskViewModel
+    var body: some View {
+        let _ = Self._printChanges()
+        Button("Add Task") {
+            viewModel.addTask("New Task \(viewModel.tasks.count + 1)")
+            viewModel.count += 1
+        }
+        .foregroundStyle(.debug)
     }
 }
 
@@ -51,7 +58,7 @@ struct TextViewOne: View {
     }
 }
 
-struct TextView: View {
+struct TextViewTwo: View {
     
     @Binding var count: Int
     
@@ -62,13 +69,10 @@ struct TextView: View {
     }
 }
 
-// 3. Create a parent view that passes the viewModel
 struct ContentView: View {
-    // The parent view creates and owns the viewModel
     @State var viewModel = TaskViewModel()
     
     var body: some View {
-        // Pass the viewModel to child views
         let _ = Self._printChanges()
         
         TaskListView(viewModel: viewModel)
