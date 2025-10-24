@@ -1,5 +1,13 @@
 //: [Previous](@previous)
-
+/*:
+The @Bindable property wrapper in SwiftUI facilitates the creation of bindings to properties of an Observable class instance. It is particularly useful when you need to modify the state of an Observable object that is not directly owned by the current view (i.e., not declared with @State).
+ - **Key aspects of @Bindable:**
+ 
+ - **For Observable Objects:** @Bindable is specifically designed for use with classes that conform to the Observable protocol, introduced in iOS 17. This includes SwiftData model objects.
+ - **Creating Bindings:** When you mark a property holding an Observable class instance with @Bindable, you gain access to a projected value (accessed with $) that allows you to create bindings to the individual mutable properties of that Observable object.
+ - **Modifying State in Child Views:** It enables child views to directly modify the properties of an Observable object passed to them, without the need to manage bindings manually for each individual property. This streamlines data flow and makes code more concise.
+ - **Coexistence with @Binding:** @Bindable does not replace @Binding. @Binding is still used for creating bindings to externally owned state, typically value types or properties declared with @State in another view. @Bindable complements @Binding by providing a mechanism for binding to the properties of Observable reference types.
+ */
 import Foundation
 import SwiftUI
 import PlaygroundSupport
@@ -105,7 +113,7 @@ class ProductEditorViewModel {
 
 // MARK: - Main Editor View
 struct ProductEditorView: View {
-    @Bindable var viewModel: ProductEditorViewModel
+    @State var viewModel: ProductEditorViewModel
     @State private var activeTab = 0
     
     var body: some View {
