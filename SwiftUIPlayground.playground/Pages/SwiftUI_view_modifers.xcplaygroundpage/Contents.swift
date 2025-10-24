@@ -25,9 +25,12 @@ struct SwiftUI_view_modifers: View {
 struct Title: ViewModifier {
     func body(content: Content) -> some View {
         content
+            //.padding(20)
             .font(.title)
             .fontWeight(.bold)
             .background(.blue)
+            .padding(20)
+            .background(.red)
             .multilineTextAlignment(.center)
     }
 }
