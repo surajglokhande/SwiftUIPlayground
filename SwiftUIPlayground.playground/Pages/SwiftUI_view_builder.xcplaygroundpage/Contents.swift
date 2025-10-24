@@ -1,14 +1,11 @@
 //: [Previous](@previous)
-
-import Foundation
-import SwiftUI
-import PlaygroundSupport
-
 /*:
  # ViewBuilder
  ## A custom parameter attribute that constructs views from closures.
  */
-
+import Foundation
+import SwiftUI
+import PlaygroundSupport
 struct SwiftUI_view_builder: View {
     func createViewUsingViewBuilderTwo() -> some View {
         Text("This is a View Builder by func using @ViewBuilder property Wrapper")
