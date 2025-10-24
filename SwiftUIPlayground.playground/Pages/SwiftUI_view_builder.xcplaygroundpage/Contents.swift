@@ -1,15 +1,21 @@
 //: [Previous](@previous)
 
 import Foundation
-import PlaygroundSupport
 import SwiftUI
+import PlaygroundSupport
+
 /*:
  # ViewBuilder
  ## A custom parameter attribute that constructs views from closures.
  */
 
 struct SwiftUI_view_builder: View {
+    func createViewUsingViewBuilderTwo() -> some View {
+        Text("This is a View Builder by func using @ViewBuilder property Wrapper")
+            .multilineTextAlignment(.center)
+    }
     var body: some View {
+        Spacer()
         TopHeaderView(name: "header_view") {
             Text("This is struct View and return content by callback")
                 .multilineTextAlignment(.center)
@@ -23,7 +29,7 @@ struct SwiftUI_view_builder: View {
             Text("This is extension View and return content by callback")
                 .multilineTextAlignment(.center)
         }
-
+        Spacer()
     }
 }
 
@@ -51,8 +57,6 @@ extension View {
         }
     }
 }
-
-
 
 PlaygroundPage.current.setLiveView(
     SwiftUI_view_builder()
