@@ -71,7 +71,7 @@ class CheckedContinuationBootcampViewModel: ObservableObject {
     
 }
 
-struct CheckedContinuationBootcamp: View {
+struct SwiftUI_swift_concurrency_continuation: View {
     
     @StateObject private var viewModel = CheckedContinuationBootcampViewModel()
     
@@ -91,9 +91,8 @@ struct CheckedContinuationBootcamp: View {
     }
 }
 
-struct CheckedContinuationBootcamp_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckedContinuationBootcamp()
-    }
-}
+PlaygroundPage.current.setLiveView(
+    SwiftUI_swift_concurrency_continuation()
+        .frame(width: 390, height: 800)
+)
 //: [Next](@next)
