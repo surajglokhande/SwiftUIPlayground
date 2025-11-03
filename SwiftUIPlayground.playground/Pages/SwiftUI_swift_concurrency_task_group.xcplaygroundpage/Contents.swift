@@ -72,7 +72,7 @@ class TaskGroupBootcampViewModel: ObservableObject {
     }
 }
 
-struct TaskGroupBootcamp: View {
+struct SwiftUI_swift_concurrency_task_group: View {
     
     @StateObject private var viewModel = TaskGroupBootcampViewModel()
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
@@ -98,7 +98,7 @@ struct TaskGroupBootcamp: View {
 }
 
 PlaygroundPage.current.setLiveView(
-    SwiftUI_swift_concurrency_async_await()
+    SwiftUI_swift_concurrency_task_group()
         .frame(width: 390, height: 800)
 )
 //: [Next](@next)
