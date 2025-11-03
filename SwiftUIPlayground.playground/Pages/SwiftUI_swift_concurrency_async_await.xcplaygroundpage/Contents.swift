@@ -22,8 +22,15 @@ struct SwiftUI_swift_concurrency_async_await: View {
                 Text(item)
             }
         }
+        .task(priority: .userInitiated) {
+            print("inside .task")
+            await viewModel.addSetting()
+        }
+//        or
         .onAppear() {
-            Task {
+            print("inside .onappear")
+            Task(priority: .low) {
+                print("inside 2nd .task")
                 await viewModel.addSetting()
             }
         }
