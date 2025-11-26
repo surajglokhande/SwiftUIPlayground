@@ -15,6 +15,12 @@
  - When a @Published property changes, it automatically calls objectWillChange.send()
  - Any view with an @ObservedObject referencing that instance receives the change notification
  - SwiftUI then re-evaluates the view's body property to reflect the updated state
+ 
+ 
+  - @State value → @Binding value ✅
+  - @StateObject property → @Binding property ✅
+  - @StateObject → @Bindable ✅ (iOS 17+)
+  - @StateObject → @Binding ❌ (doesn't work)
  */
 import Foundation
 import SwiftUI
