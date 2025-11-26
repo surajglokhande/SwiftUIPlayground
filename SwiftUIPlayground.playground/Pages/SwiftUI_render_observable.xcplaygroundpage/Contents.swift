@@ -1,5 +1,10 @@
 //: [Previous](@previous)
-
+/*:
+ - @State value → @Binding value ✅
+ - @StateObject property → @Binding property ✅
+ - @StateObject → @Bindable ✅ (iOS 17+)
+ - @StateObject → @Binding ❌ (doesn't work)
+ */
 import Foundation
 import SwiftUI
 import PlaygroundSupport
