@@ -4,6 +4,10 @@
  - @StateObject property → @Binding property ✅
  - @StateObject → @Bindable ✅ (iOS 17+)
  - @StateObject → @Binding ❌ (doesn't work)
+ 
+ 👉 @Binding is for binding between Views.
+ 
+ 👉 @Bindable is for binding between UI and ViewModel properties.
  */
 import Foundation
 import SwiftUI

@@ -4,6 +4,10 @@
  > @Binding refers to value type data owned by a different view. Changing the binding locally changes the remote data too. This does not own its data.
 
  @Binding lets us declare that one value actually comes from elsewhere, and should be shared in both places. This is not the same as @ObservedObject or @EnvironmentObject, both of which are designed for reference types to be shared across potentially many views.
+ 
+ 👉 @Binding is for binding between Views.
+ 
+ 👉 @Bindable is for binding between UI and ViewModel properties.
  */
 import SwiftUI
 import PlaygroundSupport
