@@ -88,15 +88,6 @@ struct CounterView: View {
         .foregroundStyle(.debug)
     }
 }
-extension ShapeStyle where Self == Color {
-    static var debug: Color {
-        Color(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1)
-        )
-    }
-}
 PlaygroundPage.current.setLiveView(
     SwiftUI_combine_currentValueSubject()
         .frame(width: 390, height: 844)

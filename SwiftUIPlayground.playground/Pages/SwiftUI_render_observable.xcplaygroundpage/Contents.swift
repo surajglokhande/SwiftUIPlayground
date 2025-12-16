@@ -36,11 +36,18 @@ struct TaskListView: View {
             
             TextViewTwo(count: $viewModel.count)
             
-            List(viewModel.tasks, id: \.self) { task in
-                Text(task)
-            }
+            ListView(viewModel: viewModel)
             
             ButtonView(viewModel: viewModel)
+        }
+    }
+}
+
+struct ListView: View {
+    @Bindable var viewModel: TaskViewModel
+    var body: some View {
+        List(viewModel.tasks, id: \.self) { task in
+            Text(task)
         }
     }
 }
@@ -85,16 +92,6 @@ struct ContentView: View {
         let _ = Self._printChanges()
         
         TaskListView(viewModel: viewModel)
-    }
-}
-
-extension ShapeStyle where Self == Color {
-    static var debug: Color {
-        Color(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1)
-        )
     }
 }
 

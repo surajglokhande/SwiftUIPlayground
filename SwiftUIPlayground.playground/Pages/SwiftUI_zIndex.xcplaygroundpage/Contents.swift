@@ -22,12 +22,12 @@ struct SwiftUI_zIndex: View {
                 .fill(Color.green)
                 .frame(width: 60, height: 60)
                 .offset(x: 40, y: 40) // To make it overlap
-                .zIndex(1) // zIndex is also 1
+                .zIndex(3) // zIndex is also 1
             // View 1
             Rectangle()
                 .fill(Color.red)
                 .frame(width: 100, height: 100)
-                .zIndex(1) // zIndex is 1
+                .zIndex(2) // zIndex is 1
 
             // View 2
             Rectangle()
